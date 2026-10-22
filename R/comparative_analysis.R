@@ -197,14 +197,14 @@ JS_dist <- function(fit1, fit2, grid, modelType = "Spliced"){
         out <- JS_spliced(grid, shiftp, shiftq, phip, phiq, shapep, shapeq,
                           ratep, rateq, threshp, threshq, sigmap, sigmaq,
                           xip, xiq)
-    } else if(modelType == "Desponds"){
-        if(!all(c("min.KS", "Cmin", "powerlaw.exponent",
-                  "pareto.alpha") == names(fit1))){
+    } else if (modelType == "Desponds") {
+        if (!all(vapply(c("min.KS", "Cmin", "powerlaw.exponent", "pareto.alpha"), function(X)
+            X %in% names(fit1), logical(1)))) {
             stop("\"fit1\" is not of the correct structure. It must be a model
                  fit from fdesponds.")
         }
-        if(!all(c("min.KS", "Cmin", "powerlaw.exponent",
-                  "pareto.alpha") == names(fit2))){
+        if (!all(vapply(c("min.KS", "Cmin", "powerlaw.exponent", "pareto.alpha"), function(X)
+            X %in% names(fit2), logical(1)))) {
             stop("\"fit2\" is not of the correct structure. It must be a model
                  fit from fdesponds.")
         }
